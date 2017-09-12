@@ -1,0 +1,30 @@
+---
+ - hosts: 192.168.1.146
+   sudo: yes
+   user: sonal
+   tasks:
+   - copy:
+       src: /home/sonal/mayank/ansible/cfg2html-1.79-1.el7.rf.noarch.rpm
+       dest: /home/sonal/mayank/
+   - name: permission
+     file:  
+       path: /home/sonal/mayank/cfg2html-1.79-1.el7.rf.noarch.rpm
+       mode: 777
+   - name: install pkg
+     command: sudo apt-get install alien -y
+   - name: Create debian pkg
+     command: sudo alien cfg2html-1.79-1.el7.rf.noarch.rpm 
+     args:  
+        chdir: /home/sonal/mayank/
+   - name: dpkg
+     command: dpkg -i /home/sonal/mayank/cfg2html_1.79-2_all.deb
+   - name:
+     command: sh cfg2html arg1
+     args:
+        chdir: /usr/bin/
+   - name: fetching
+     fetch: src={{ item }} dest=/home/sonal/cent1/prefix-{{ ansible_hostname }} mode=pull
+     with_items:
+         - "/usr/bin/{{ ansible_hostname }}.txt"
+
+         - "/usr/bin/{{ ansible_hostname }}.html"
