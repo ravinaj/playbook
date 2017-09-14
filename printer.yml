@@ -1,0 +1,7 @@
+---
+ - hosts: WIN03.ansible.com
+   gather_facts: no
+   tasks:
+     - name: running script
+       win_shell: C:\Temp\prin.ps1
+
