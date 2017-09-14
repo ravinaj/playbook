@@ -1,0 +1,7 @@
+---
+ - hosts: WIN03.ansible.com
+   gather_facts: no
+   tasks:
+     - name: running script
+#       win_command: pnputil.exe -e       
+       win_command: pnputil.exe -f -d oem0.inf
