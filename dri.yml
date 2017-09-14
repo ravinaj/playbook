@@ -1,0 +1,11 @@
+---
+ - hosts: WIN03.ansible.com
+   gather_facts: true
+   tasks:
+   - name: copying the file
+     win_copy: src=/root/ans/sysinfo.vbs dest=C:\Temp\
+   - name: running the script
+     win_shell: C:\Temp\sysinfo.vbs
+   - fetch: 
+       src: C:\{{ ansible_hostname }}.html
+       dest: /root/cent/prefix-{{ ansible_hostname }}  
