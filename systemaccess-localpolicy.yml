@@ -1,0 +1,10 @@
+---
+ - hosts: WIN03.ansible.com
+   gather_facts: true
+   tasks:
+   - name: change the guest account name
+     win_security_policy:
+       section: System Access
+       key: NewGuestName
+       value: Guest Account
+   
