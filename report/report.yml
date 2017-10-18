@@ -1,0 +1,11 @@
+---
+ - hosts: main
+   become: true
+   gather_facts: no
+   tasks:
+     - name: Fetching File from Windows
+       command: ansible-playbook -i /home/sonam/ansible_sonam/hosts /home/sonam/playbook_sonam/report/fetch.yml
+     - name: Comparing the Files
+       command: ansible-playbook -i /home/sonam/ansible_sonam/hosts /home/sonam/playbook_sonam/report/compare.yml
+     - name: Copy the output to windows
+       command: ansible-playbook -i /home/sonam/ansible_sonam/hosts /home/sonam/playbook_sonam/report/copy.yml

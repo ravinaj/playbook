@@ -1,0 +1,12 @@
+---
+ - hosts: 192.168.1.133
+   gather_facts: no
+   tasks:
+    - name: "Fetching files from Windows"
+      fetch: 
+       src: "{{ item }}"
+       dest: /home/compare/
+       flat: yes
+      with_items:
+       - "C:/Temp/ansible/file1.txt"
+       - "C:/Temp/ansible/file2.txt"

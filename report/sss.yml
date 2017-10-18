@@ -1,0 +1,9 @@
+--- 
+ - hosts: main
+   become: true
+   gather_facts: no
+   tasks:
+     - name: Running ansible playbook
+       command: ansible 192.168.1.133 -i /home/sonam/ansible_sonam/hosts -m win_ping
+       register: out
+     - local_action: copy content={{ out.stdout }} dest=/home/compare/sss

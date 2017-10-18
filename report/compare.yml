@@ -1,0 +1,14 @@
+---
+ - hosts: main
+   gather_facts: no
+   become: true
+   tasks:
+    - name: "Get difference"
+      command: diff file1.txt file2.txt 
+      args:
+        chdir: /home/compare/
+      failed_when: "diff.rc > 1"
+      register: diff
+    - local_action: copy content={{ diff.stdout }} dest=/home/compare/output
+      
+      
