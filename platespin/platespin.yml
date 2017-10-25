@@ -1,0 +1,20 @@
+---
+ - hosts: 
+   gather_facts: False
+   - tasks: 
+        - name: disabling windows firewall
+          win_firewall: 
+             state: disabled
+             profiles: 
+             - Public
+             - Domain
+             - Private
+        - name: Disable UAC and install IIS and other pre-req according to platespin
+          win_shell: C:\pre-requisites.ps1
+        - name: rebooting system for changes to take place
+          win_reboot: required
+        - name: installing SQLEXPRESS with batch file
+          win_shell: C:\sql.bat
+        - name: installing platespin server and client
+          win_shell: C:\platespin.bat
+   
