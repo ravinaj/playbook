@@ -1,0 +1,56 @@
+[GenericExample:vars]
+
+###########################################################################
+### Ansible Vars
+###########################################################################
+timeout=60
+ansible_become=yes
+ansible_ssh_user=ec2-user
+
+
+[GenericExample:children]
+towers
+frontends
+apps
+appdbs
+windows
+support
+
+[towers]
+## These are the towers
+tower1.bcd6.internal public_host_name=tower1.bcd6.example.opentlc.com ssh_host=ec2-54-208-111-73.compute-1.amazonaws.com
+tower2.bcd6.internal public_host_name=tower2.bcd6.example.opentlc.com ssh_host=ec2-34-230-123-130.compute-1.amazonaws.com
+tower3.bcd6.internal public_host_name=tower3.bcd6.example.opentlc.com ssh_host=ec2-34-198-153-52.compute-1.amazonaws.com
+
+[frontends]
+## These are the frontends
+frontend1.bcd6.internal ssh_host=ec2-52-71-180-103.compute-1.amazonaws.com
+
+[apps]
+## These are the apps
+app1.bcd6.internal ssh_host=ec2-34-238-236-23.compute-1.amazonaws.com
+app2.bcd6.internal ssh_host=ec2-34-207-40-119.compute-1.amazonaws.com
+
+[appdbs]
+## These are the appdbs
+appdb1.bcd6.internal ssh_host=ec2-34-232-129-56.compute-1.amazonaws.com
+
+[windows]
+## These are the activedirectory servers
+activedirectory1.bcd6.internal ssh_host=ec2-52-1-175-250.compute-1.amazonaws.com ansible_password=jVMijRwLbI02gFCo2xkjlZ9lxEA7bm7zgg==
+
+
+## These are the supporthosts
+[support]
+support1.bcd6.internal ssh_host=ec2-34-237-50-0.compute-1.amazonaws.com
+support2.bcd6.internal ssh_host=ec2-54-236-210-223.compute-1.amazonaws.com
+
+[windows:vars]
+ansible_connection=winrm
+ansible_port=5986
+ansible_ssh_port=5986
+ansible_user=Administrator
+ansible_ssh_user=Administrator
+ansible_winrm_server_cert_validation=ignore
+ansible_winrm_transport=basic
+ansible_become=false
