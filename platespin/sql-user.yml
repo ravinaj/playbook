@@ -11,7 +11,7 @@
        - name: Insert/update Ansible powershell file 
          blockinfile: 
            path: /sa-user.sql
-           marker: <!-- {mark} Ansible report module for AVS Migration --> 
+           marker: <!-- {mark} Ansible script for creating sql user --> 
            content: | 
             
             USE [master]
