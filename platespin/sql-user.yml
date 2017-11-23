@@ -8,3 +8,9 @@
        - file:
            path: /sa-user.sql
            state: touch
+       - name: Insert/update Ansible powershell file 
+         blockinfile: 
+           path: /sa-user.sql
+           
+
+
