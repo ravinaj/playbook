@@ -21,6 +21,10 @@
         - service:
              name: SQLAgent$SQLEXPRESS
              state: started
+        - name: restarting sql services
+        - service:
+             name: SQLAgent$SQLEXPRESS
+             state: started
         - name: installing platespin server and client
           win_shell: C:\platespin.bat
    
