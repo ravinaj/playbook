@@ -1,1 +1,10 @@
 ---
+ - hosts: localhost
+   connection: local
+   gather_facts: no
+   sudo: yes
+   tasks:
+       - name: Create a new file
+       - file:
+           path: /sa-user.sql
+           state: touch
