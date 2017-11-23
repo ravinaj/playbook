@@ -15,6 +15,14 @@
           win_reboot: required
         - name: installing SQLEXPRESS with batch file
           win_shell: C:\sql.bat
+        - name: Creating sql file for sa user
+          win_file:
+             path: C:\sa-user.sql
+             state: touch
+        - name: Creating powershell file for sa user
+          win_file:
+             path: C:\sa-ps.ps1
+             state: touch    
         - name: installing platespin server and client
           win_shell: C:\platespin.bat
    
