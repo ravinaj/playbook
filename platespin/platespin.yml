@@ -17,6 +17,10 @@
           win_shell: C:\sql.bat
         - name: running the sql sa-user script
           win_shell: sqlcmd -S .\SQLEXPRESS -i C:\sa-user.sql
+        - name: restarting sql services
+        - service:
+             name: SQLAgent$SQLEXPRESS
+             state: started
         - name: installing platespin server and client
           win_shell: C:\platespin.bat
    
