@@ -15,8 +15,8 @@
           win_reboot: required
         - name: installing SQLEXPRESS with batch file
           win_shell: C:\sql.bat
-        - name: running the sql sa-user script
-          win_shell: sqlcmd -S .\SQLEXPRESS -i C:\sa-user.sql
+      #  - name: running the sql sa-user script
+       #   win_shell: sqlcmd -S .\SQLEXPRESS -i C:\sa-user.sql
         - name: restarting sql services
         - service:
              name: SQLAgent$SQLEXPRESS
